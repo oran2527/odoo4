@@ -19,3 +19,16 @@ The module must be located in next path from your
 odoo/server/odoo/addons/
 ```
 
+### step 3 
+
+Open your browser and open the next url
+
+```bash
+localhost:8069
+```
+
+### step 4
+
+Type email and password (According step 1)
+
+![plot](./user/open_academy/static/images/login.png)
