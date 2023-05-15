@@ -32,3 +32,16 @@ localhost:8069
 Type email and password (According step 1)
 
 ![plot](./user/open_academy/static/images/login.png)
+
+### step 5
+
+Delete Applications filter 
+
+![plot](./user/open_academy/static/images/app_filter.png)
+
+### step 6
+
+Type open 
+
+![plot](./user/open_academy/static/images/open.png)
+
