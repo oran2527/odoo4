@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 
 from odoo import models, fields, api
+from odoo.modules.module import get_module_resource
 
 from io import BytesIO
 from xlrd import open_workbook
@@ -37,10 +38,12 @@ class open_academy(models.Model):
         txt_data = []
 
         # ruta para acceder archivo de reglas
+        '''
         path = os.getcwd()
         new_path = path.replace(os.sep, '/')
         rule_path_json = new_path + "/../server/odoo/addons/user/open_academy/rules/reglas.json"
-                
+        '''
+        rule_path_json = get_module_resource('open_academy', 'rules', 'reglas.json')        
         
         # extrae informacion del archivo json con las reglas
         with open(rule_path_json) as reglas:
@@ -88,12 +91,13 @@ class open_academy(models.Model):
                 valor_txt = validations_anio_valor(sh.row(rx)[2].value, valor_json_type, valor_json_size)
 
                 txt_data.append(anio_txt + concepto_txt + valor_txt)
-
         
         
         # ruta para acceder archivo de reglas
+        '''
         path = os.getcwd()
         new_path = path.replace(os.sep, '/')
+        '''
         current_date = datetime.datetime.now()
         cyear = str(current_date.year) + "_"
         cmonth = str(current_date.month) + "_"
@@ -102,7 +106,8 @@ class open_academy(models.Model):
         cmin = str(current_date.minute) + "_"
         csec = str(current_date.second) 
         filename = "archivo_final_" + cyear + cmonth + cday + chour + cmin + csec + ".txt"  
-        txt_path = new_path + "/../server/odoo/addons/user/open_academy/static/" + filename
+        #txt_path = new_path + "/../server/odoo/addons/user/open_academy/static/" + filename
+        txt_path = get_module_resource('open_academy', 'static') + '\\' + str(filename)
 
         # se abre archivo txt para escribir la informacion del array
         with open(txt_path, 'wt') as final_text:
